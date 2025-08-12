@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Owais - Icon Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <i class="fas fa-icons"></i>
+        </div>
+        <div class="loading-text">Muhammad Owais</div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-icons"></i>
+                <span>Muhammad Owais</span>
+            </a>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search icons..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <div class="auth-section">
+                <!-- Added authentication buttons and user info display -->
+                <div id="authButtons" class="auth-buttons">
+                    <button class="auth-btn" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </button>
+                    <button class="auth-btn primary" id="signupBtn">
+                        <i class="fas fa-user-plus"></i>
+                        Sign Up
+                    </button>
+                </div>
+                
+                <div id="userInfo" class="user-info" style="display: none;">
+                    <span class="welcome-text">Welcome, <span id="userName"></span>!</span>
+                    <button class="auth-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Updated filter buttons to All Icons, Icons, and Social Icons -->
+    <section class="filters">
+        <div class="filters-content">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th"></i>
+                All Icons
+            </button>
+            <button class="filter-btn" data-filter="icons">
+                <i class="fas fa-star"></i>
+                Icons
+            </button>
+            <button class="filter-btn" data-filter="social">
+                <i class="fas fa-share-alt"></i>
+                Social Icons
+            </button>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="main">
+        <div class="results-info">
+            <div id="resultsInfo">Loading icons...</div>
+            <button class="learn-more-btn" id="learnMoreBtn">Learn More</button>
+        </div>
+
+        <div class="icon-grid" id="iconGrid">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading awesome icons...</p>
+            </div>
+        </div>
+
+        <button class="load-more" id="loadMoreBtn" style="display: none;">
+            Load More Icons
+        </button>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No icons found</h3>
+            <p>Try adjusting your search terms or filters</p>
+        </div>
+    </main>
+
+    <!-- Added authentication modal for login and signup -->
+    <div class="modal-overlay" id="authModalOverlay">
+        <div class="modal auth-modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="authModalTitle">Login</h2>
+                <button class="close-btn" id="closeAuthModal">×</button>
+            </div>
+            
+            <form id="authForm" class="auth-form">
+                <div class="form-group">
+                    <label for="authEmail">Email</label>
+                    <input type="email" id="authEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="authPassword">Password</label>
+                    <input type="password" id="authPassword" required>
+                </div>
+                
+                <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                    <label for="authConfirmPassword">Confirm Password</label>
+                    <input type="password" id="authConfirmPassword">
+                </div>
+                
+                <div class="form-group" id="nameGroup" style="display: none;">
+                    <label for="authName">Full Name</label>
+                    <input type="text" id="authName">
+                </div>
+                
+                <button type="submit" class="auth-submit-btn" id="authSubmitBtn">Login</button>
+                
+                <div class="auth-switch">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button type="button" id="authSwitchBtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">How to Use Font Awesome Icons</h2>
+                <button class="close-btn" id="closeModal">×</button>
+            </div>
+            
+            <div class="modal-icon" id="modalIcon">
+                <i class="fas fa-info-circle"></i>
+                <div class="modal-icon-name">Getting Started</div>
+            </div>
+
+            <div class="code-section">
+                <div class="code-label">1. Add Font Awesome CDN to your HTML &lt;head&gt;:</div>
+                <div class="code-block">
+                    <button class="copy-btn" data-copy="cdn">Copy</button>
+                    <code id="cdnCode">&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"&gt;</code>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <div class="code-label">2. Use any icon in your HTML:</div>
+                <div class="code-block">
+                    <button class="copy-btn" data-copy="html">Copy</button>
+                    <code id="htmlCode">&lt;i class="fas fa-home"&gt;&lt;/i&gt;</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>    
+</body>
+</html>
